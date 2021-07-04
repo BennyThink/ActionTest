@@ -1,0 +1,3 @@
+[submodule "ytdl-bot"]
+	path = ytdl-bot
+	url = https://github.com/tgbot-collection/ytdl-bot

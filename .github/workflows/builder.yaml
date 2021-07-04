@@ -5,6 +5,10 @@ jobs:
     name: Build docker image
     runs-on: ubuntu-20.04
     steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          submodules: true
       - name: Build Step 1
         env:
           MY_VAR: Hi there! My name is
