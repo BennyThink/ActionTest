@@ -11,12 +11,11 @@ jobs:
           submodules: true
       - name: Build Step 1
         env:
-          MY_VAR: Hi there! My name is
-          FIRST_NAME: Mona
-          MIDDLE_NAME: The
-          LAST_NAME: Octocat
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
         run: |
-          ls -alh
+          echo 1111; echo $TEST_SECRET; echo $secrets
+#      - name: Build and push Docker images
+#        uses: docker/build-push-action@v2.6.1
 
 #  push:
 #    name: Push to Dockerhub
