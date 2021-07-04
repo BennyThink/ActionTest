@@ -1,0 +1,20 @@
+on: push
+
+jobs:
+  build:
+    name: Build docker image
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Build Step 1
+        env:
+          MY_VAR: Hi there! My name is
+          FIRST_NAME: Mona
+          MIDDLE_NAME: The
+          LAST_NAME: Octocat
+        run: |
+          ls -alh
+
+#  push:
+#    name: Push to Dockerhub
+#    runs-on: ubuntu-20.04
+#    needs: build
