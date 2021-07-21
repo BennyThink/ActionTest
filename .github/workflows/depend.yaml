@@ -1,0 +1,17 @@
+on:
+  push:
+    branches:
+      - 'master'
+
+  workflow_run:
+    workflows: ["docker"]
+    types:
+      - completed
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using ssh key
+      run: |
+        echo "hello"
