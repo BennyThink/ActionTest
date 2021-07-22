@@ -4,7 +4,7 @@ on:
       - 'master'
 
   workflow_run:
-    workflows: ["docker"]
+    workflows: ["builder"]
     types:
       - completed
 
@@ -12,6 +12,6 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using ssh key
+    - name: echo hello
       run: |
         echo "hello"

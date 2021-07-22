@@ -1,0 +1,23 @@
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: emergency update
+        if: github.event.issue.labels[0].name == 'upgrade'
+        run: |
+          echo "emergency"
+          sleep 10
+
+      - name: print event
+        uses: hmarr/debug-action@v2
+
+      - name: Close Issue
+        if: github.event.issue.labels[0].name == 'upgrade'
+        uses: peter-evans/close-issue@v1
+        with:
+          comment: Upgrade complete. Close this.

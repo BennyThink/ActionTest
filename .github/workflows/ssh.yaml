@@ -9,10 +9,14 @@ jobs:
     steps:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
+      env:
+        TOKEN: ${{ secrets.BOT_TOKEN }}
       with:
         host: ${{ secrets.DEV_HOST }}
         username: ${{ secrets.DEV_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
+        envs: TOKEN
         script: |
           whoami
           hostname
+          curl "https://api.telegram.org/bot$TOKEN/sendMessage?chat_id=260260121&text=test"
