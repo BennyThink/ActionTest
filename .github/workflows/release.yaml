@@ -1,0 +1,35 @@
+name: release
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, darwin-latest ]
+        node-version: [ 12.x ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17.3
+
+
+      - name: libaom for Ubuntu
+        run: sudo apt-get update && sudo apt install libaom-dev
+        if: startsWith(matrix.os, 'ubuntu')
+
+      - name: libaom for macOS
+        run: brew install aom
+        if: startsWith(matrix.os, 'macos')
+
+      - name: Build
+        run: cd webp_server_go && make

@@ -1,3 +1,7 @@
 [submodule "ytdl-bot"]
 	path = ytdl-bot
 	url = https://github.com/tgbot-collection/ytdl-bot
+[submodule "webp_server_go"]
+	path = webp_server_go
+	url = https://github.com/webp-sh/webp_server_go
+    branch = avif
